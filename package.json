@@ -1,0 +1,16 @@
+{
+  "name": "mern-blog",
+  "version": "1.0.0",
+  "description": "La parte frontend e backend sono separate nelle loro rispettive cartelle",
+  "main": "index.js",
+  "scripts": {
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  }
+}

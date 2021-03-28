@@ -1,0 +1,3 @@
+/// LOADER
+export const LOADER_START = 'SET_LOADER';
+export const LOADER_FINISH = 'LOADER_FINISH';

@@ -1,0 +1,15 @@
+{
+  "env": {
+    "DB_USER": "daniele1",
+    "DB_PASSWORD": "0123456",
+    "DB_NAME": "blog",
+    "GOOGLE_API_KEY": "1234567890",
+    "JWT_KEY": "supersecret_dont_share",
+    "EMAIL_USER": "dmanzi83@gmail.com",
+    "EMAIL_PASS": "Broli regna corre salt4",
+    "EMAIL_FROM": "\"Daniele\" <dmanzi83@gmail.com>",
+    "DOMAIN": "http://localhost:3000",
+    "VAPID_PUBLIC_KEY": "BFBJVm-Qz-hibAfjHedVXS5T_RJre8cBOYlmVF-LFoz8ybTR43eXI5ayqx3FccvZXPndRKhfN4cSigA8YyXBGC4",
+    "VAPID_PRIVATE_KEY": "7Q8gPKmMK7o_TPgoYE7njlqk-SdS50Az5h5DnZZ6a8g"
+  }
+}
