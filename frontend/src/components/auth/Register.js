@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
   },
   card: {
     // backgroundColor: 'violet',
     width: 600,
     // minWidth: 300,
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   },
   form: {
     // backgroundColor: 'yellow',
@@ -33,15 +33,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     '& > *': {
-      width: 250
-    }
+      width: 250,
+    },
   },
   textField: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(6),
   },
   button: {
-    marginTop: theme.spacing(6)
-  }
+    marginTop: theme.spacing(6),
+  },
 }));
 
 const Register = ({ register, user }) => {
@@ -51,7 +51,7 @@ const Register = ({ register, user }) => {
     usernameRef: React.createRef(),
     emailRef: React.createRef(),
     passwordRef: React.createRef(),
-    password2Ref: React.createRef()
+    password2Ref: React.createRef(),
   };
 
   const submit = (values) => {
@@ -63,11 +63,11 @@ const Register = ({ register, user }) => {
     onFormSubmit,
     values,
     errors,
-    isDisabledButton
+    isDisabledButton,
   } = useForm(submit, { original: 'password', clone: 'password2' });
 
   React.useEffect(() => {
-    console.log('isDisabledButton', isDisabledButton);
+    // console.log('isDisabledButton', isDisabledButton);
   }, [isDisabledButton]);
 
   if (user) {
@@ -76,12 +76,12 @@ const Register = ({ register, user }) => {
       <div className={classes.root}>
         <Card className={classes.card}>
           <Typography variant="subtitle1" gutterBottom>
-            Grazie <strong>{username}</strong> per esserti iscritto al nostro
-            sito nel ruolo di <strong>{role}</strong>.
+            Grazie <strong>{username}</strong> per esserti iscritto al nostro sito nel
+            ruolo di <strong>{role}</strong>.
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
-            Per completare la registrazione vai alla tua email{' '}
-            <strong>{email}</strong> e clicca il bottone "Conferma Iscrizione".
+            Per completare la registrazione vai alla tua email <strong>{email}</strong> e
+            clicca il bottone "Conferma Iscrizione".
           </Typography>
         </Card>
       </div>
@@ -116,15 +116,13 @@ const Register = ({ register, user }) => {
             name="username"
             value={values.username ? values.username : ''}
             helperText={
-              errors.username
-                ? errors.username
-                : values.username && 'Valore valido'
+              errors.username ? errors.username : values.username && 'Valore valido'
             }
             error={errors.username ? true : false}
             inputProps={{
               minLength: 2,
               maxLength: 10,
-              pattern: '[a-zA-Z]+'
+              pattern: '[a-zA-Z]+',
             }}
             onChange={onInputChange}
           />
@@ -138,14 +136,12 @@ const Register = ({ register, user }) => {
             type="email"
             name="email"
             value={values.email ? values.email : ''}
-            helperText={
-              errors.email ? errors.email : values.email && 'Valore valido'
-            }
+            helperText={errors.email ? errors.email : values.email && 'Valore valido'}
             error={errors.email ? true : false}
             inputProps={{
               minLength: 8,
               maxLength: 64,
-              pattern: '\\S+@\\S+\\.[a-z]{2,}'
+              pattern: '\\S+@\\S+\\.[a-z]{2,}',
             }}
             onChange={onInputChange}
           />
@@ -161,9 +157,7 @@ const Register = ({ register, user }) => {
             name="password"
             value={values.password ? values.password : ''}
             helperText={
-              errors.password
-                ? errors.password
-                : values.password && 'Valore valido'
+              errors.password ? errors.password : values.password && 'Valore valido'
             }
             error={errors.password ? true : false}
             inputProps={{ minLength: 6, maxLength: 64, pattern: '.+' }}
@@ -181,9 +175,7 @@ const Register = ({ register, user }) => {
             name="password2"
             value={values.password2 ? values.password2 : ''}
             helperText={
-              errors.password2
-                ? errors.password2
-                : values.password2 && 'Valore valido'
+              errors.password2 ? errors.password2 : values.password2 && 'Valore valido'
             }
             error={errors.password2 ? true : false}
             inputProps={{ minLength: 6, maxLength: 64, pattern: '.+' }}
@@ -210,11 +202,11 @@ const Register = ({ register, user }) => {
 
 Register.propTypes = {
   register: PropTypes.func.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { register })(Register);

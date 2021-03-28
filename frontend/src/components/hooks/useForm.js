@@ -22,7 +22,7 @@ const useForm = (submit, pairElements, inputsNumber = null) => {
     const { type, name, value, checked } = event.target;
     // console.log('type:', type);
     // console.log('name:', name);
-    console.log('value:', value);
+    // console.log('value:', value);
     // console.log('checked:', checked);
     if (type === 'checkbox') {
       setValues({ ...values, [name]: checked });
@@ -45,8 +45,7 @@ const useForm = (submit, pairElements, inputsNumber = null) => {
     const numOfValues = Object.keys(values).length;
 
     const numOfInputs =
-      inputsNumber ??
-      document.querySelectorAll('INPUT.MuiInputBase-input').length;
+      inputsNumber ?? document.querySelectorAll('INPUT.MuiInputBase-input').length;
     // console.log('Values', numOfValues);
     // console.log('Inputs', numOfInputs);
     if (numOfValues === numOfInputs) {
@@ -73,7 +72,7 @@ const useForm = (submit, pairElements, inputsNumber = null) => {
     onFormSubmit,
     values,
     errors,
-    isDisabledButton
+    isDisabledButton,
   };
 };
 

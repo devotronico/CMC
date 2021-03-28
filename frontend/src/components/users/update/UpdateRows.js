@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
+// import clsx from 'clsx';
 
 import { connect } from 'react-redux';
 import {
   updateSelectedUsers,
-  deleteSelectedUsers
+  deleteSelectedUsers,
 } from '../../../redux/users/usersActions';
 
 import UpdateGrid from './UpdateGrid';
@@ -17,25 +17,20 @@ import Drawer from '@material-ui/core/Drawer';
 const useStyles = makeStyles((theme) => ({
   gridWrapper: {
     // backgroundColor: 'green',
-    padding: 4
+    padding: 4,
     // width: 'auto',
     // overflow: 'hidden'
-  }
+  },
 }));
 
-function UpdateRows({
-  selected,
-  setSelected,
-  updateSelectedUsers,
-  deleteSelectedUsers
-}) {
+function UpdateRows({ selected, setSelected, updateSelectedUsers, deleteSelectedUsers }) {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
   const [values, setValues] = useState({
     username: '',
     age: '',
     role: '',
-    register_at: ''
+    register_at: '',
   });
 
   const handleChange = (prop) => (event) => {
@@ -91,9 +86,7 @@ UpdateRows.propTypes = {
   selected: PropTypes.array.isRequired,
   setSelected: PropTypes.func.isRequired,
   updateSelectedUsers: PropTypes.func.isRequired,
-  deleteSelectedUsers: PropTypes.func.isRequired
+  deleteSelectedUsers: PropTypes.func.isRequired,
 };
 
-export default connect(null, { updateSelectedUsers, deleteSelectedUsers })(
-  UpdateRows
-);
+export default connect(null, { updateSelectedUsers, deleteSelectedUsers })(UpdateRows);

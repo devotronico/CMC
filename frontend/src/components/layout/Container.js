@@ -1,7 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import {  } from 'react';
 
 import { connect } from 'react-redux';
 import { loadUser } from '../../redux/auth/authActions';

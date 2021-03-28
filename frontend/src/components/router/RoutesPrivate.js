@@ -15,7 +15,7 @@ const UsersList = React.lazy(() => import('../users/UsersList'));
 const UserCreate = React.lazy(() => import('../user/UserCreate'));
 const UsersManager = React.lazy(() => import('../users/UsersManager'));
 /// PROFILES
-const CreateProfile = React.lazy(() => import('../profile/CreateProfile'));
+// const CreateProfile = React.lazy(() => import('../profile/CreateProfile'));
 const ProfilesList = React.lazy(() => import('../profiles/ProfilesList'));
 const ProfilesManager = React.lazy(() => import('../profiles/ProfilesManager'));
 /// LOGS
@@ -71,13 +71,7 @@ const RoutesPrivate = ({ role }) => {
         roles={['system']}
         component={ProfilesManager}
       />
-      <RouterRole
-        exact
-        path="/logs"
-        role={role}
-        roles={['system']}
-        component={Logs}
-      />
+      <RouterRole exact path="/logs" role={role} roles={['system']} component={Logs} />
       <RouterRole
         exact
         path="/logs/manager"

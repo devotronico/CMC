@@ -1,3 +1,11 @@
+### rimossa sezione blog
+
+La sezione blog è stata momentaneamente sospesa ma non cancellata
+
+### info tecniche
+
+Suspense (componente di React)
+
 ### info
 
 Il deploy del frontend e del backend su piattaforme di hosting diverse.
@@ -45,6 +53,16 @@ Il backend è hostato su heroku
 
 ---
 
+## fonritori
+
+- [ ] fonritori lista
+- [ ] fonritore dettagli
+- [ ] fonritore crea
+- [ ] fonritore modifica
+- [ ] fonritore cancella
+
+---
+
 ## posts
 
 - [ ] posts
@@ -52,10 +70,6 @@ Il backend è hostato su heroku
 - [ ] posts crea
 - [ ] posts modifica
 - [ ] posts cancella
-
-```
-
-```
 
 ---
 

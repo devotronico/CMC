@@ -15,7 +15,7 @@ import {
   RESET_PASSWORD_FAIL,
   NEW_PASSWORD_SUCCESS,
   NEW_PASSWORD_FAIL,
-  DELETE_ACCOUNT
+  DELETE_ACCOUNT,
 } from './authTypes';
 
 import setAuthToken from '../../utils/setAuthToken';
@@ -65,8 +65,8 @@ export const register = ({ username, email, password }) => async (dispatch) => {
   dispatch(setLoader());
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   }; // [a]
   const body = JSON.stringify({ username, email, password }); // [b]
 
@@ -78,7 +78,7 @@ export const register = ({ username, email, password }) => async (dispatch) => {
     ); // [c]
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
-    console.log('ERRORE');
+    // console.log('ERRORE');
     console.error(err.response.data);
     const errors = err.response.data.errors;
 
@@ -98,8 +98,8 @@ export const verification = (hash, history) => async (dispatch) => {
   dispatch(setLoader()); // TEST
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   };
   const body = JSON.stringify({ hash });
 
@@ -130,8 +130,8 @@ export const login = ({ email, password, history }) => async (dispatch) => {
   dispatch(setLoader());
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   };
   const body = JSON.stringify({ email, password });
 
@@ -184,8 +184,8 @@ export const resetPassword = ({ email }) => async (dispatch) => {
   dispatch(setLoader());
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   }; // [a]
   const body = JSON.stringify({ email }); // [b]
 
@@ -212,14 +212,12 @@ export const resetPassword = ({ email }) => async (dispatch) => {
 };
 
 /// NEW PASSWORD
-export const newPassword = ({ hash, password, history }) => async (
-  dispatch
-) => {
+export const newPassword = ({ hash, password, history }) => async (dispatch) => {
   dispatch(setLoader());
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   }; // [a]
   const body = JSON.stringify({ hash, password }); // [b]
 

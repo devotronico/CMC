@@ -49,14 +49,14 @@ const register = async (req, res, next) => {
     type: 'error',
     title: 'Errore Server',
     msg: 'Si è verificato un errore, riprovare piu tardi.',
-    timeout: 10000
+    timeout: 10000,
   };
 
   const warnMessage = {
     type: 'warning',
     title: 'Errore Registrazione',
     msg: 'Credenziali non valide, impossibile accedere.',
-    timeout: 10000
+    timeout: 10000,
   }; /// </a>
 
   /// <b>
@@ -74,7 +74,11 @@ const register = async (req, res, next) => {
   try {
     existingUser = await User.findOne({ email });
   } catch (err) {
+    console.log('==========');
+    console.log('OK 1');
     res.status(500).json({ errors: [errorMessage] });
+    console.log('OK 2');
+    console.log('==========');
     return next();
   }
 
@@ -88,7 +92,7 @@ const register = async (req, res, next) => {
   const avatar = gravatar.url(email, {
     s: '80',
     d: 'retro',
-    r: 'pg'
+    r: 'pg',
   }); /// </d>
 
   /// <e> Setta il ruolo
@@ -96,6 +100,7 @@ const register = async (req, res, next) => {
   try {
     totalUser = await User.countDocuments();
   } catch (error) {
+    console.log('OK 3');
     res.status(500).json({ errors: [errorMessage] });
     return next();
   }
@@ -105,6 +110,7 @@ const register = async (req, res, next) => {
   /// <f> Fa l' hash della password
   const hashedPassword = await utils.createHash(password);
   if (!hashedPassword) {
+    console.log('OK 4');
     res.status(500).json({ errors: [errorMessage] });
     return next();
   } /// </f>
@@ -112,6 +118,7 @@ const register = async (req, res, next) => {
   /// <g> Crea l' hash per il codice verify
   const verify = await utils.createHash(new Date().toString(), true);
   if (!verify) {
+    console.log('OK 5');
     res.status(500).json({ errors: [errorMessage] });
     return next();
   } /// </g>
@@ -123,12 +130,13 @@ const register = async (req, res, next) => {
     avatar,
     password: hashedPassword,
     verify,
-    role
+    role,
   });
 
   try {
     await createdUser.save();
   } catch (err) {
+    console.log('OK 6');
     res.status(500).json({ errors: [errorMessage] });
     return next();
   } /// </h>
@@ -143,6 +151,7 @@ const register = async (req, res, next) => {
   );
 
   if (!isSent) {
+    console.log('OK 7');
     res.status(500).json({ errors: [errorMessage] });
     return next();
   } /// </i>
@@ -150,7 +159,7 @@ const register = async (req, res, next) => {
   res.status(201).json({
     username: createdUser.username,
     email: createdUser.email,
-    role: createdUser.role
+    role: createdUser.role,
   });
   return next();
 };
@@ -181,7 +190,7 @@ const verification = async (req, res, next) => {
     type: 'error',
     title: 'Errore Verification',
     msg: 'Si è verificato un errore, riprovare più tardi.',
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>
@@ -246,7 +255,7 @@ const loadUser = async (req, res, next) => {
     type: 'error',
     title: 'Errore Autorizzazione',
     msg: 'Autorizzazione fallita, impossibile accedere.',
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>
@@ -275,7 +284,7 @@ const loadUser = async (req, res, next) => {
     isAuthenticated: user.isAuthenticated,
     login_at: user.login_at.toLocaleDateString(),
     logout_at: user.logout_at.toLocaleDateString(),
-    register_at: user.register_at.toLocaleDateString()
+    register_at: user.register_at.toLocaleDateString(),
   });
   next();
 };
@@ -308,14 +317,14 @@ const login = async (req, res, next) => {
     type: 'error',
     title: 'Errore Server',
     msg: 'Si è verificato un errore, riprovare piu tardi.',
-    timeout: 10000
+    timeout: 10000,
   };
 
   const warnMessage = {
     type: 'warning',
     title: 'Errore Login',
     msg: 'Credenziali non valide, impossibile accedere.',
-    timeout: 10000
+    timeout: 10000,
   };
 
   const infoMessage = {
@@ -324,7 +333,7 @@ const login = async (req, res, next) => {
     msg: `L' account non è stato ancora attivato,
 Per attivarlo clicca il bottone nel messaggio che ti
 è stato inviato alla tua email.`,
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>
@@ -368,14 +377,14 @@ Per attivarlo clicca il bottone nel messaggio che ti
     isValidPassword = await bcrypt.compare(password, existingUser.password);
   } catch (err) {
     res.status(500).json({
-      errors: [errorMessage]
+      errors: [errorMessage],
     });
     return next();
   }
 
   if (!isValidPassword) {
     res.status(403).json({
-      errors: [warnMessage]
+      errors: [warnMessage],
     });
     return next();
   } /// </c>
@@ -438,7 +447,7 @@ const logout = async (req, res, next) => {
     type: 'error',
     title: 'Errore Server',
     msg: 'Si è verificato un errore, riprovare piu tardi.',
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>
@@ -449,7 +458,7 @@ const logout = async (req, res, next) => {
       id,
       {
         isAuthenticated: 0,
-        logout_at: new Date()
+        logout_at: new Date(),
       },
       { new: true }
     );
@@ -496,14 +505,14 @@ const resetPassword = async (req, res, next) => {
     type: 'error',
     title: 'Errore Reset Password',
     msg: 'Si è verificato un errore, riprovare più tardi.',
-    timeout: 10000
+    timeout: 10000,
   };
 
   const warnMessage = {
     type: 'warning',
     title: 'Errore Reset Password',
     msg: 'è richiesta un email valida',
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>
@@ -587,7 +596,7 @@ const newPassword = async (req, res, next) => {
     type: 'error',
     title: 'Errore New Password',
     msg: 'Si è verificato un errore, riprovare più tardi.',
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>
@@ -655,7 +664,7 @@ const deleteAccount = async (req, res, next) => {
     type: 'error',
     title: 'Errore Cancellazione',
     msg: 'Cancellazione non riuscita, riprovare più tardi.',
-    timeout: 10000
+    timeout: 10000,
   }; /// </m>
 
   /// <a>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   updateSelectedUsers,
-  deleteSelectedUsers
+  deleteSelectedUsers,
 } from '../../../redux/users/usersActions';
 
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -22,24 +22,24 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1)
+    paddingRight: theme.spacing(1),
   },
   highlight:
     theme.palette.type === 'light'
       ? {
           color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85)
+          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
         }
       : {
           color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark
+          backgroundColor: theme.palette.secondary.dark,
         },
   title: {
-    flex: '1 1 100%'
+    flex: '1 1 100%',
   },
   divider: {
-    margin: theme.spacing(1, 1)
-  }
+    margin: theme.spacing(1, 1),
+  },
   // textField: {
   //   width: 100
   // }
@@ -49,18 +49,15 @@ const MyTableToolbar = ({
   selected,
   setSelected,
   updateSelectedUsers,
-  deleteSelectedUsers
+  deleteSelectedUsers,
 }) => {
   const classes = useToolbarStyles();
   const numSelected = selected.length;
 
-  const handleOnClickUpdate = (event, type, value) => {
-    // console.log('TYPE', type);
-    // console.log('VALUE', value);
-
+  /*   const handleOnClickUpdate = (event, type, value) => {
     updateSelectedUsers(selected, type, value);
     setSelected([]);
-  };
+  }; */
 
   const handleOnClickDelete = () => {
     deleteSelectedUsers(selected);
@@ -70,15 +67,11 @@ const MyTableToolbar = ({
   return (
     <Toolbar
       className={clsx(classes.root, {
-        [classes.highlight]: numSelected > 0
+        [classes.highlight]: numSelected > 0,
       })}
     >
       {numSelected > 0 ? (
-        <Typography
-          className={classes.title}
-          color="inherit"
-          variant="subtitle1"
-        >
+        <Typography className={classes.title} color="inherit" variant="subtitle1">
           {numSelected} selected
         </Typography>
       ) : (
@@ -157,7 +150,7 @@ MyTableToolbar.propTypes = {
   selected: PropTypes.array.isRequired,
   setSelected: PropTypes.func.isRequired,
   updateSelectedUsers: PropTypes.func.isRequired,
-  deleteSelectedUsers: PropTypes.func.isRequired
+  deleteSelectedUsers: PropTypes.func.isRequired,
 };
 
 export default connect(null, { updateSelectedUsers, deleteSelectedUsers })(

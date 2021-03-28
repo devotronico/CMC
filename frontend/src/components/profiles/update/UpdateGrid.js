@@ -4,7 +4,7 @@ import UpdateName from './UpdateName';
 import UpdateRole from './UpdateRole';
 import UpdateAge from './UpdateAge';
 import UpdateOnline from './UpdateOnline';
-import UpdateDate from './UpdateDate';
+// import UpdateDate from './UpdateDate';
 import UpdateDatetime from './UpdateDatetime';
 import UpdateClose from './UpdateClose';
 // import DeleteRows from './DeleteRows';
@@ -12,25 +12,25 @@ import UpdateClose from './UpdateClose';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     // backgroundColor: 'orange',
     padding: 4,
     flexGrow: 1,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   grid: {
     // backgroundColor: 'red',
     padding: 4,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   center: {
     // backgroundColor: 'salmon',
     height: 75,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 }));
 
 export default function UpdateGrid({ values, handleChange, handleUpdate }) {
@@ -68,10 +68,7 @@ export default function UpdateGrid({ values, handleChange, handleUpdate }) {
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={2} className={classes.center}>
-          <UpdateOnline
-            handleChange={handleChange}
-            handleUpdate={handleUpdate}
-          />
+          <UpdateOnline handleChange={handleChange} handleUpdate={handleUpdate} />
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={2} className={classes.center}>
           <UpdateDatetime

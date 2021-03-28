@@ -3,7 +3,7 @@ import React from 'react';
 import SegmentDashboard from './public/SegmentDashboard';
 import SegmentAuthNotLogged from './public/SegmentAuthPublic';
 import SegmentSettings from './private/SegmentSettings';
-import SegmentPostsNotLogged from './public/SegmentPostsPublic';
+// import SegmentPostsNotLogged from './public/SegmentPostsPublic';
 
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -17,7 +17,7 @@ export default function SidebarDesktopPublic({
   sidebarTop,
   sidebarTopClose,
   sidebarBody,
-  sidebarBot
+  sidebarBot,
 }) {
   return (
     <Drawer
@@ -25,7 +25,7 @@ export default function SidebarDesktopPublic({
       anchor="left"
       open={isOpen}
       classes={{
-        paper: sidebar
+        paper: sidebar,
       }}
     >
       <div className={sidebarTop}>
@@ -40,8 +40,8 @@ export default function SidebarDesktopPublic({
       </div>
       <div className={sidebarBody}>
         <SegmentAuthNotLogged />
-        <Divider />
-        <SegmentPostsNotLogged />
+        {/* <Divider /> */}
+        {/* <SegmentPostsNotLogged /> */}
       </div>
       <div className={sidebarBot}>
         <Divider />

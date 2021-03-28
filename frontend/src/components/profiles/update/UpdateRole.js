@@ -4,17 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-import Tooltip from '@material-ui/core/Tooltip';
+// import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   role: {
     // backgroundColor: "blue",
     // margin: 20,
     display: 'flex',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 }));
 
 export default function UpdateRole({ role, handleChange, handleUpdate }) {
@@ -31,7 +31,7 @@ export default function UpdateRole({ role, handleChange, handleUpdate }) {
           labelWidth={40}
           inputProps={{
             name: 'role',
-            id: 'update-role'
+            id: 'update-role',
           }}
         >
           <option value="" />
@@ -42,7 +42,7 @@ export default function UpdateRole({ role, handleChange, handleUpdate }) {
       </FormControl>
       <IconButton
         aria-label="attiva"
-        onClick={event => handleUpdate(event, 'role', role)}
+        onClick={(event) => handleUpdate(event, 'role', role)}
       >
         <CheckCircleIcon />
       </IconButton>

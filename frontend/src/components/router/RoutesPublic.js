@@ -11,8 +11,8 @@ const ResetPassword = React.lazy(() => import('../auth/ResetPassword'));
 const VerifyAccount = React.lazy(() => import('../auth/VerifyAccount'));
 const NewPassword = React.lazy(() => import('../auth/NewPassword'));
 
-const Posts = React.lazy(() => import('../posts/Posts'));
-const Post = React.lazy(() => import('../post/Post'));
+// const Posts = React.lazy(() => import('../posts/Posts'));
+// const Post = React.lazy(() => import('../post/Post'));
 
 const Error = React.lazy(() => import('../error/Error'));
 
@@ -26,8 +26,8 @@ const RoutesPublic = () => {
       <Route exact path="/reset-password" component={ResetPassword} />
       <Route exact path="/verify/:hash" component={VerifyAccount} />
       <Route exact path="/new-password/:hash" component={NewPassword} />
-      <Route exact path="/post/id/:id" component={Post} />
-      <Route exact path="/posts" component={Posts} />
+      {/* <Route exact path="/post/id/:id" component={Post} /> */}
+      {/* <Route exact path="/posts" component={Posts} /> */}
       <Route exact path="/error" component={Error} />
       <Redirect to="/error" />
     </Switch>

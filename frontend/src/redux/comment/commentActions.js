@@ -60,10 +60,7 @@ export const readComment = (id) => async (dispatch) => {
   console.log('ID 1:', id);
 
   try {
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/comment/${id}`,
-      config
-    );
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/comment/${id}`, config);
     console.log('DATA', res.data);
     dispatch({ type: COMMENT_READ, payload: res.data });
   } catch (err) {
@@ -101,11 +98,11 @@ export const deleteComment = (id) => {
 /// ADD like
 export const addLike = (id) => async (dispatch) => {
   dispatch(setLoader());
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // };
   return {
     type: COMMENT_LIKES_UPDATE,
     comment: id,

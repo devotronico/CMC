@@ -23,37 +23,38 @@ moment.updateLocale('en', {
     M: 'un mese',
     MM: '%d mesi',
     y: 'un anno',
-    yy: '%d anni'
-  }
+    yy: '%d anni',
+  },
 });
 
 const useStyles = makeStyles({
   comment: {
     display: 'flex',
     // alignItems: "center",
-    margin: 16
+    margin: 16,
   },
   commentText: {
     padding: '8px',
     flexGrow: '1',
     marginLeft: '16px',
     borderRadius: '4px',
-    backgroundColor: '#F4F6F8'
+    backgroundColor: '#F4F6F8',
   },
   commentAuthor: {
     display: 'flex',
     // alignItems: "center",
-    marginBottom: 16
+    marginBottom: 16,
   },
   commentTime: {
-    marginLeft: 'auto'
-  }
+    marginLeft: 'auto',
+  },
 });
 
 export default function Comment({ comment }) {
   // console.log(data);
 
-  const { _id, user, text, created_at } = comment;
+  const { user, text, created_at } = comment;
+  // const { _id, user, text, created_at } = comment;
   // const { _id, user_id, name, avatar, text, created_at } = comment;
   //   console.log(comment);
 
@@ -68,11 +69,7 @@ export default function Comment({ comment }) {
             <Typography variant="body2" component="p">
               {user.name}
             </Typography>
-            <Typography
-              variant="body2"
-              component="p"
-              className={classes.commentTime}
-            >
+            <Typography variant="body2" component="p" className={classes.commentTime}>
               {moment(created_at).fromNow()}
             </Typography>
           </div>
